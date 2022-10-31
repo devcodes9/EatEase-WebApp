@@ -1,0 +1,93 @@
+.header{
+    background-color: #03989E;
+    color: #E9EAED;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.headerContainer{
+    width: 100%;
+    max-width: 1024px;
+    margin: 20px 0px 80px 0px; 
+}
+
+.headerContainer.listType{
+    margin: 20px 0px 0px 0px; 
+}
+
+.headerList{
+    display: flex;
+    gap: 40px;
+    margin-bottom: 35px;
+}
+
+.headerListItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerListItem.active{
+    border: 1px solid #E9EAED;
+    padding: 8px;
+    border-radius: 20px;
+    background-color:#DD5642;
+}
+
+.headerDesc{
+    margin: 20px 0px;
+
+}
+
+.headerBtn{
+    background-color: #DD5642;
+    color: #E9EAED;
+    font-weight: 550;
+    border: none;
+    border-radius: 6px;
+    padding: 8px;
+    cursor: pointer;
+}
+
+.headerSearch{
+    height: 30px;
+    background-color:#E9EAED;
+    border: 3px solid #DD5642;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    border-radius: 5px;
+    position: absolute;
+    bottom: -25px;
+    width: 100%;
+    max-width: 1024px;
+}
+
+.headerIcon{
+    color:#03989E;
+
+}
+
+.headerSearchItem{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.headerSearchInput{
+    border:none;
+    outline: none;
+}
+
+.headerSearchText{
+    color: rgb(117, 115, 115);
+    cursor: pointer;
+}
+
+.date{
+    position: absolute;
+    top: 50px;
+}
+

@@ -1,0 +1,33 @@
+/* Hex Codes: #03989E #E9EAED #CAF0F4 */
+*{
+    margin: 0;
+    padding: 0;
+}
+.navbar{
+    height: 50px;
+    background-color: #03989E;
+    display: flex;
+    justify-content: center;
+}
+
+.navContainer{
+    width: 100%;
+    max-width: 1024px;
+    color: #E9EAED;
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+
+.logo{
+    font-weight: 600;
+}
+
+.navButton{
+    margin-left: 20px;
+    border: none;
+    padding: 4px 10px;
+    cursor: pointer;
+    color: #03989E;
+    background-color:#E9EAED;
+}
