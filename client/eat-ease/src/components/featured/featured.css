@@ -1,0 +1,25 @@
+.featured{
+    width: 100%;
+    max-width: 1024px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.featuredItem{
+    position: relative;
+    max-width: 1024px;
+    border-radius: 10px;
+    width: 100%;
+    object-fit: cover;
+    overflow: hidden;
+    color: white;
+}
+
+.featuredTitle{
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}

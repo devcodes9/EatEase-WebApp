@@ -9,7 +9,7 @@
 .headerContainer{
     width: 100%;
     max-width: 1024px;
-    margin: 20px 0px 80px 0px; 
+    margin: 20px 0px 100px 0px; 
 }
 
 .headerContainer.listType{
@@ -19,7 +19,7 @@
 .headerList{
     display: flex;
     gap: 40px;
-    margin-bottom: 35px;
+    margin-bottom: 50px;
 }
 
 .headerListItem{
@@ -57,7 +57,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 10px 10px;
+    padding: 10px 0px;
     border-radius: 5px;
     position: absolute;
     bottom: -25px;
@@ -89,5 +89,6 @@
 .date{
     position: absolute;
     top: 50px;
+    z-index: 2;
 }
 
