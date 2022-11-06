@@ -1,7 +1,7 @@
 import React from 'react'
 import './header.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUtensils, faTags, faCalendarDays} from '@fortawesome/free-solid-svg-icons'
+import { faUtensils, faTags, faCalendarDays, faLocationDot} from '@fortawesome/free-solid-svg-icons'
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
@@ -43,6 +43,10 @@ export const Header = ({type}) => {
                 <input type="text" placeholder="What food do you prefer?" className="headerSearchInput" />
             </div>
             <div className="headerSearchItem">
+                <FontAwesomeIcon icon={faLocationDot}  className="headerIcon" />
+                <input type="text" placeholder="Enter your delivery location" className="headerSearchInput" />
+            </div>
+            <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays}  className="headerIcon" />
                 <span onClick={()=>setOpenDate(!openDate)} className="headerSearchText">{`${format(date[0].startDate,"dd/MM/yyyy")} to ${format(date[0].endDate,"dd/MM/yyyy")}`}</span>
                 {openDate && <DateRange
@@ -58,7 +62,7 @@ export const Header = ({type}) => {
                 <span className="headerSearchText"></span>
             </div> */}
             <div className="headerSearchItem">
-                <button className="headerBtn">Search</button>
+                <button className="headerBtn">Find Food</button>
             </div>
             </div>
             </>}   
