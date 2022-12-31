@@ -34,8 +34,8 @@ export const Header = ({type}) => {
             </div>
             {type !== "list" &&
                 <>
-            <h1 className="headerTitle">Hunger not at ease? Well, Welcome😉</h1>
-            <p className="headerDesc">Food just like your Mom makes(even tastier)</p>
+            <h1 className="headerTitle">Crave for "Ghar ka khana"? Well,Welcome😉</h1>
+            <p className="headerDesc">Food just like your Mom makes(even tastier) on Subscription basis!</p>
             <button className="headerBtn">Sign In/Register</button>
             <div className="headerSearch">
             <div className="headerSearchItem">
