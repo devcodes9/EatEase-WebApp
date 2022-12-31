@@ -15,8 +15,8 @@ export const Home = () => {
             <h1 className='homeTitle'>Browse by Cuisine</h1>
             <FoodList />
             <Featured /> 
-            <Footer />
             </div>
+            <Footer />
         </div>
     )
 }
