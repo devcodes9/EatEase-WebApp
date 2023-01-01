@@ -10,7 +10,7 @@ const Featured = () => {
             <div className="card-img-overlay">
                 <h5 className="card-title">Apna Kitchen</h5>
                 <p className="card-text">Delicious Apne vale Plans</p>
-                <a href="#" class="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
+                <a href="#" className="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
                 <p className="card-text"><small>30 Subscribed</small></p>
             </div>
             </div>
@@ -21,7 +21,7 @@ const Featured = () => {
         <div className="card-img-overlay">
             <h5 className="card-title">Mumma's best</h5>
             <p className="card-text">Quality & Reasonable</p>
-            <a href="#" class="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
+            <a href="#" className="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
             <p className="card-text"><small>28 Subscribed</small></p>
         </div>
         </div>
@@ -32,7 +32,7 @@ const Featured = () => {
         <div className="card-img-overlay">
             <h5 className="card-title">Khana Khazana</h5>
             <p className="card-text">South Indian's Vadakkam</p>
-            <a href="#" class="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
+            <a href="#" className="btn" style={{backgroundColor: "#DD5642"}}>Subscribe</a>
             <p className="card-text"><small>18 Subscribed</small></p>
         </div>
         </div>

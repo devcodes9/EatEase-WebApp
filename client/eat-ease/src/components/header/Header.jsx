@@ -7,9 +7,12 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import {useState} from 'react'
 import { format } from 'date-fns';
+import { useNavigate } from 'react-router-dom';
 
 
 export const Header = ({type}) => {
+    const [destination, setDestination] = useState("");
+    const [food, setFood] = useState("");
     const [openDate, setOpenDate] = useState(false);
     const [date, setDate] = useState([
         {
@@ -18,6 +21,12 @@ export const Header = ({type}) => {
           key: 'selection'
         }
       ]);
+    
+    const navigate = useNavigate()
+
+    const handleSearch = () =>{
+        navigate("/kitchens", {state: {food, destination, date}})
+    }
   return (
     <div className="header">
         <div className= {type === "list" ? 'headerContainer listType':'headerContainer'}>
@@ -40,11 +49,19 @@ export const Header = ({type}) => {
             <div className="headerSearch">
             <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faUtensils}  className="headerIcon" />
-                <input type="text" placeholder="What food do you prefer?" className="headerSearchInput" />
+                <input type="text" 
+                placeholder="What food do you prefer?" 
+                className="headerSearchInput" 
+                onChange={e=>{setFood(e.target.value);}}    
+                />
             </div>
             <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faLocationDot}  className="headerIcon" />
-                <input type="text" placeholder="Enter your delivery location" className="headerSearchInput" />
+                <input type="text" 
+                placeholder="Enter your delivery location" 
+                className="headerSearchInput" 
+                onChange={e=>{setDestination(e.target.value);}}
+                />
             </div>
             <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faCalendarDays}  className="headerIcon" />
@@ -62,7 +79,7 @@ export const Header = ({type}) => {
                 <span className="headerSearchText"></span>
             </div> */}
             <div className="headerSearchItem">
-                <button className="headerBtn">Find Food</button>
+                <button className="headerBtn" onClick={handleSearch}>Find Food</button>
             </div>
             </div>
             </>}   

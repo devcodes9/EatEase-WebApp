@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 export const Footer = () => {
   return (
-      <div classNameName="footer">
+      <div>
   <footer className="text-center text-white" style={{backgroundColor: "#03989E"}}>
     <div className="container p-4">
       <section className="mb-4">
@@ -33,7 +33,7 @@ export const Footer = () => {
         </div>
       </section>
     </div>
-    <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2);"}}>
+    <div className="text-center p-3" style={{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
       © 2022 Copyright:
       <a className="text-white" href="#">EatEase</a>
     </div>
