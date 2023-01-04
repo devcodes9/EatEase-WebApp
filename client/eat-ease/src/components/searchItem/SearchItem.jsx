@@ -11,12 +11,16 @@ const SearchItem = () => {
           alt="..."
         />
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
+          <div className="sCtn">
+            <h5 className="card-title">Card title</h5>
+            <button className="rating">3.5</button>
+          </div>
+          <span>Distance from center</span>
           <p className="card-text">
             Some quick example text to build on the card title and make up the
             bulk of the card's content.
           </p>
-          <a href="#" className="btn" style={{backgroundColor: "#DD5642"}}>
+          <a href="#" className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>
             Subscribe
           </a>
         </div>

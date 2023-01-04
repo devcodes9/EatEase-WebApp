@@ -19,6 +19,7 @@
     position: sticky;
     top: 10px;
     align-items: center;
+    height: max-content;
 }
 
 .listResult{
