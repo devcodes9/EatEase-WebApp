@@ -38,7 +38,7 @@ export const Header = ({type}) => {
 
                 <div className='headerListItem'>
                     <FontAwesomeIcon icon={faTags} />
-                    <span>Plans</span>
+                    <span>Offers</span>
                 </div>
             </div>
             {type !== "list" &&
