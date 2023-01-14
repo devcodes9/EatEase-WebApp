@@ -47,5 +47,17 @@ const getAllKitchen = async (req,res,next) => {
         next(err);
     }
 }
+const countByKitchen = async (req,res,next) => {
+    const cities = req.query.cities.split(",");
+    try {
+        const list = await Promise.all(cities.map(city => {
+            return Kitchen.countDocuments({city: city});
+        }))
+        res.status(200).json(list);
+    } catch (err) {
+        next(err);
+    }
+}
 
-module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen};
+
+module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen, countByKitchen};
