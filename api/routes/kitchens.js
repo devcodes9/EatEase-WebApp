@@ -1,5 +1,5 @@
 const express = require("express");
-const { createKitchen, updateKitchen, deleteKitchen, getKitchen, getAllKitchen, countByKitchen } = require("../controllers/kitchen.js");
+const { createKitchen, updateKitchen, deleteKitchen, getKitchen, getAllKitchen, countByKitchen, countByType } = require("../controllers/kitchen.js");
 const router = express.Router();
 const Kitchen = require('../models/Kitchen.js');
 const createError = require('../utils/error.js');
@@ -19,7 +19,7 @@ router.get("/find/:id", getKitchen)
 
 //Get All
 router.get("/", getAllKitchen)
-// router.get("/countByType", countByType)
 router.get("/countByKitchen", countByKitchen)
+router.get("/countByType", countByType)
 
 module.exports = router

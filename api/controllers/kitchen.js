@@ -47,17 +47,36 @@ const getAllKitchen = async (req,res,next) => {
         next(err);
     }
 }
+
 const countByKitchen = async (req,res,next) => {
-    const cities = req.query.cities.split(",");
+    const kitchens = req.query.kitchens.split(",");
+    console.log(kitchens);
     try {
-        const list = await Promise.all(cities.map(city => {
-            return Kitchen.countDocuments({city: city});
-        }))
+        const list = [];
+        for (let index = 0; index < kitchens.length; index++) {
+            const doc = await Kitchen.findOne({name: kitchens[index]});
+            list.push(doc.totalSubCnt);
+        }
         res.status(200).json(list);
+    } catch (err) {
+        next(err);
+    }
+}
+const countByType = async (req,res,next) => {
+    try {
+        const gujCnt = await Kitchen.countDocuments({type: "Gujarati"})
+        const northCnt = await Kitchen.countDocuments({type: "North Indian"})
+        const southCnt = await Kitchen.countDocuments({type: "South Indian"})
+
+        res.status(200).json([
+            {type: "Gujarati", cnt : gujCnt},
+            {type: "North Indian", cnt : northCnt},
+            {type: "South Indian", cnt : southCnt}
+        ]);
     } catch (err) {
         next(err);
     }
 }
 
 
-module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen, countByKitchen};
+module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen, countByKitchen, countByType};

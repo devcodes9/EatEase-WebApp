@@ -18,6 +18,10 @@ const KitchenSchema = new Schema({
         type: String,
         required: true
     },
+    totalSubCnt: {
+        type: Number,
+        required: true
+    },
     distance: {
         type: String,
         required: true
