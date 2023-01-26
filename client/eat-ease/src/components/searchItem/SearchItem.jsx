@@ -1,7 +1,7 @@
 import React from "react";
 import "./searchItem.css";
 
-const SearchItem = () => {
+const SearchItem = ({ item }) => {
   return (
     <div>
       <div className="card mb-3" style={{ width: "100%" }}>
@@ -10,17 +10,22 @@ const SearchItem = () => {
           className="card-img-top"
           alt="..."
         />
+        {/* <img
+          src={item.photos[0]}
+          className="card-img-top"
+          alt="..."
+        /> */}
         <div className="card-body">
           <div className="sCtn">
-            <h5 className="card-title">Card title</h5>
-            <button className="rating">3.5</button>
+            <h5 className="card-title">{item.name}</h5>
+            {item.rating &&
+              <button className="rating">{item.rating}</button>}
           </div>
-          <span>Distance from center</span>
+          <span>{item.distance} from center</span>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+            {item.desc}
           </p>
-          <a href="#" className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>
+          <a href={`/kitchens/${item._id}`} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>
             Subscribe
           </a>
         </div>
