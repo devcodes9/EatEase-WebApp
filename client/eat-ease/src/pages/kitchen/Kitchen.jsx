@@ -5,7 +5,14 @@ import { Header } from "../../components/header/Header";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Footer } from "../../components/footer/Footer";
+import { useLocation } from "react-router-dom";
+import { useFetch } from "../../hooks/useFetch";
+
 export const Kitchen = () => {
+  const location = useLocation()
+  const id = location.pathname.split("/")[2]
+  console.log(id)
+  const { data, loading, error } = useFetch(`/kitchens/find/${id}`)
   const images = [
     {
       src: "https://img.freepik.com/free-photo/indian-delicious-roti-assortment_23-2149073331.jpg?w=900&t=st=1672825926~exp=1672826526~hmac=2127faf18c21ca0f66b0290f07408cd9714635f3122ca2639c14f255efb9763a",
@@ -30,7 +37,8 @@ export const Kitchen = () => {
     <div>
       <Navbar />
       <Header type="list" />
-      <div className="kitchenCtn">
+      {loading ? ("Loading") : 
+      (<div className="kitchenCtn">
         <div className="kitchenWrapper">
           <div className="callWrapper">
             For further information:
@@ -42,14 +50,14 @@ export const Kitchen = () => {
               Contact No
             </button>
           </div>
-          <h1 className="kitchenTitle">D's Ghar</h1>
+          <h1 className="kitchenTitle">{data.name}</h1>
           <div className="kitchenAddress">
             <FontAwesomeIcon icon={faLocationDot} />
-            <span>Bhaijipura, Raysan</span>
+            <span>{data.address}</span>
           </div>
-          <span className="kitchenDistance">500m from center</span>
+          <span className="kitchenDistance">{data.distance} from center</span>
           <div className="kitchenImages">
-            {images.map((image) => (
+            {data.photos?.map((image) => (
               <div className="kitchenImgWrapper">
                 <img src={image.src} alt="..." className="kitchenImg" />
               </div>
@@ -57,7 +65,7 @@ export const Kitchen = () => {
           </div>
           <div className="kitchenDetails">
             <div className="kitchenDetailsTexts">
-              <span className="kitchenDesc">Just say Yummmmmm</span>
+              <span className="kitchenDesc">{data.desc}</span>
             </div>
           </div>
           <h1 className="planTitle">Plans</h1>
@@ -115,7 +123,7 @@ export const Kitchen = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div>)}
       <Footer />
     </div>
   );
