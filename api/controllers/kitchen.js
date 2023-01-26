@@ -41,7 +41,7 @@ const getKitchen = async (req,res,next) => {
 const getAllKitchen = async (req,res,next) => {
     try {
         const kitchens = await Kitchen.find(
-            req.params.id);
+            req.query);
         res.status(200).json(kitchens);
     } catch (err) {
         next(err);
