@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import "./searchItem.css";
 
 const SearchItem = ({ item }) => {
@@ -25,9 +26,9 @@ const SearchItem = ({ item }) => {
           <p className="card-text">
             {item.desc}
           </p>
-          <a href={`/kitchens/${item._id}`} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>
+          <Link to={`/kitchens/${item._id}`} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>
             Subscribe
-          </a>
+          </Link>
         </div>
       </div>
     </div>

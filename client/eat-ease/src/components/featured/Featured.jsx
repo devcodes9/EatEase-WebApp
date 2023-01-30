@@ -12,7 +12,7 @@ const Featured = () => {
                     : (
                         <>
                             {data.map((item) => (
-                                <div className="container">
+                                <div className="container" key = {item._id}>
                                     <div className="card text-bg-dark mb-3" key={item._id}>
                                         <img src="https://images.unsplash.com/photo-1616170687910-2edb17b633d5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" className="card-img" alt="..." ></img>
                                         {/* <img src= {item.photos[0]} className="card-img" alt="..." ></img> */}

@@ -8,6 +8,7 @@ import {
 import { List } from "./pages/list/List";
 import { Home } from "./pages/home/Home";
 import {Kitchen} from "./pages/kitchen/Kitchen";
+import Login from "./pages/login/Login";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/kitchens" element={<List />} />
         <Route path="/kitchens/:id" element={<Kitchen />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </BrowserRouter>
   );

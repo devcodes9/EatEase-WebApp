@@ -5,16 +5,17 @@ import { faUtensils, faTags, faCalendarDays, faLocationDot } from '@fortawesome/
 import { DateRange } from 'react-date-range';
 import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext';
 
 
 export const Header = ({ type }) => {
     const [destination, setDestination] = useState("");
     const [food, setFood] = useState("");
     const [openDate, setOpenDate] = useState(false);
-    const [date, setDate] = useState([
+    const [dates, setDates] = useState([
         {
             startDate: new Date(),
             endDate: new Date(),
@@ -22,10 +23,31 @@ export const Header = ({ type }) => {
         }
     ]);
 
-    const navigate = useNavigate()
+    // const [loading, setLoading] = useState(true);
+    // console.log("I m out", {food, destination, dates})
+    const {dispatch} = useContext(SearchContext);
 
-    const handleSearch = () => {
-        navigate("/kitchens", { state: { food, destination, date } })
+    const navigate = useNavigate()
+    
+    const handleSearch = async (e) => {
+        e.preventDefault();
+        // console.log("I m out", {food, destination, dates});
+        if(!food || !destination ||  !dates){
+            console.log("Esme meri expertise nahi hai");
+        }
+  
+        await dispatch({type: "NEW_SEARCH", payload: { food, destination, dates }});
+        // setLoading(false);
+
+        // const data = {food: food, destination: destination, dates: dates};
+        // console.log("Data" , data);
+
+        // if(loading === false){
+        // }
+        const data = {food: food, destination: destination, dates: dates};
+        console.log("Data" , data);
+        
+        navigate("/kitchens", { state: data })
     }
     return (
         <div className="header">
@@ -46,6 +68,7 @@ export const Header = ({ type }) => {
                         <h1 className="headerTitle">Crave for "Ghar ka khana"? Well,Welcome😉</h1>
                         <p className="headerDesc">Food just like your Mom makes(even tastier) on Subscription basis!</p>
                         <button className="headerBtn">Sign In/Register</button>
+                        <form onSubmit={handleSearch}>
                         <div className="headerSearch">
                             <div className="headerSearchItem">
                                 <FontAwesomeIcon icon={faUtensils} className="headerIcon" />
@@ -65,12 +88,12 @@ export const Header = ({ type }) => {
                             </div>
                             <div className="headerSearchItem">
                                 <FontAwesomeIcon icon={faCalendarDays} className="headerIcon" />
-                                <span onClick={() => setOpenDate(!openDate)} className="headerSearchText">{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+                                <span onClick={() => setOpenDate(!openDate)} className="headerSearchText">{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
                                 {openDate && <DateRange
                                     editableDateInputs={true}
-                                    onChange={item => setDate([item.selection])}
+                                    onChange={item => setDates([item.selection])}
                                     moveRangeOnFirstSelection={false}
-                                    ranges={date}
+                                    ranges={dates}
                                     minDate={new Date()}
                                     className="date"
                                 />}
@@ -80,11 +103,13 @@ export const Header = ({ type }) => {
                 <span className="headerSearchText"></span>
             </div> */}
                             <div className="headerSearchItem">
-                                <button className="headerBtn" onClick={handleSearch}>Find Food</button>
+                                <button className="headerBtn" type='submit'>Find Food</button>
                             </div>
                         </div>
+                        </form>
                     </>}
             </div>
         </div>
+
     )
 }

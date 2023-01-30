@@ -7,12 +7,17 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { Footer } from "../../components/footer/Footer";
 import { useLocation } from "react-router-dom";
 import { useFetch } from "../../hooks/useFetch";
+import { useContext } from "react";
+import { SearchContext } from "../../context/SearchContext";
 
 export const Kitchen = () => {
   const location = useLocation()
   const id = location.pathname.split("/")[2]
-  console.log(id)
   const { data, loading, error } = useFetch(`/kitchens/find/${id}`)
+  
+  const op = useContext(SearchContext);
+  console.log(op);
+
   const images = [
     {
       src: "https://img.freepik.com/free-photo/indian-delicious-roti-assortment_23-2149073331.jpg?w=900&t=st=1672825926~exp=1672826526~hmac=2127faf18c21ca0f66b0290f07408cd9714635f3122ca2639c14f255efb9763a",

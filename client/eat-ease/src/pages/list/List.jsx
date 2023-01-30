@@ -13,10 +13,10 @@ export const List = () => {
   const location = useLocation()
   const [destination, setDestination] = useState(location.state.destination)
   const [food, setFood] = useState(location.state.food)
-  const [date, setDate] = useState(location.state.date)
+  const [dates, setDates] = useState(location.state.dates)
   const [openDate, setOpenDate] = useState(false)
 
-  const {data, loading, error, reFetch} = useFetch(`/kitchens?city=${destination}`);
+  const {data, loading, error, reFetch} = useFetch(`/kitchens?city=${destination}&type=${food}`);
 
   const handleClick = () => {
     reFetch();
@@ -39,10 +39,11 @@ export const List = () => {
             </div>
             <div className="lsItem">
               <label>Start date:</label>
-              <span onClick={() => setOpenDate(!openDate)}>{`${format(date[0].startDate, "dd/MM/yyyy")} to ${format(date[0].endDate, "dd/MM/yyyy")}`}</span>
+              <span onClick={() => setOpenDate(!openDate)}>{`${format(dates[0].startDate, "dd/MM/yyyy")} to ${format(dates[0].endDate, "dd/MM/yyyy")}`}</span>
               {openDate && <DateRange
-                onChange={(item) => setDate([item.selection])}
+                onChange={(item) => setDates([item.selection])}
                 minDate={new Date()}
+                ranges={dates}
               />}
             </div>
             <div className='lsItem'>
