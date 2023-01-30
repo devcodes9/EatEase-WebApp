@@ -9,10 +9,8 @@ const INITIAL_STATE = {
 export const SearchContext = createContext(INITIAL_STATE);
 
 const SearchReducer = (state, action) => {
-    console.log(state,action);
     switch (action.type) {
         case "NEW_SEARCH":
-            console.log("state activated");
             return action.payload
         case "RESET_SEARCH":
             return INITIAL_STATE

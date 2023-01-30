@@ -32,9 +32,9 @@ export const Header = ({ type }) => {
     const handleSearch = async (e) => {
         e.preventDefault();
         // console.log("I m out", {food, destination, dates});
-        if(!food || !destination ||  !dates){
-            console.log("Esme meri expertise nahi hai");
-        }
+        // if(!food || !destination ||  !dates){
+        //     console.log("Esme meri expertise nahi hai");
+        // }
   
         await dispatch({type: "NEW_SEARCH", payload: { food, destination, dates }});
         // setLoading(false);
@@ -45,7 +45,7 @@ export const Header = ({ type }) => {
         // if(loading === false){
         // }
         const data = {food: food, destination: destination, dates: dates};
-        console.log("Data" , data);
+        // console.log("Data" , data);
         
         navigate("/kitchens", { state: data })
     }

@@ -15,8 +15,16 @@ export const Kitchen = () => {
   const id = location.pathname.split("/")[2]
   const { data, loading, error } = useFetch(`/kitchens/find/${id}`)
   
-  const op = useContext(SearchContext);
-  console.log(op);
+  const {dates} = useContext(SearchContext);
+  
+  const dayDiff = (date1, date2) => {
+    const timeDiff = Math.abs(date1.getTime() - date2.getTime());
+    const diffDays = Math.ceil(timeDiff / (1000*60*60*24));
+
+    return diffDays;
+  }
+
+  const days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
 
   const images = [
     {
@@ -81,13 +89,13 @@ export const Kitchen = () => {
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">An item</li>
                   <li className="list-group-item">A second item</li>
-                  <li className="list-group-item">A third item</li>
+                  <li className="list-group-item">100 Rs / day</li>
                   <a
                     href="#"
                     className="btn"
-                    style={{ backgroundColor: "#DD5642" }}
+                    style={{ backgroundColor: "#DD5642", color: "white"}}
                   >
-                    Subscribe
+                    Pay {100 * days} Rs
                   </a>
                 </ul>
               </div>
@@ -98,13 +106,13 @@ export const Kitchen = () => {
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">An item</li>
                   <li className="list-group-item">A second item</li>
-                  <li className="list-group-item">A third item</li>
+                  <li className="list-group-item">150 Rs / day</li>
                   <a
                     href="#"
                     className="btn"
-                    style={{ backgroundColor: "#DD5642" }}
+                    style={{ backgroundColor: "#DD5642", color: "white" }}
                   >
-                    Subscribe
+                    Pay {150 * days} Rs
                   </a>
                 </ul>
               </div>
@@ -115,13 +123,13 @@ export const Kitchen = () => {
                 <ul className="list-group list-group-flush">
                   <li className="list-group-item">An item</li>
                   <li className="list-group-item">A second item</li>
-                  <li className="list-group-item">A third item</li>
+                  <li className="list-group-item">200 Rs / day</li>
                   <a
                     href="#"
                     className="btn"
-                    style={{ backgroundColor: "#DD5642" }}
+                    style={{ backgroundColor: "#DD5642" , color: "white"}}
                   >
-                    Subscribe
+                    Pay {200 * days} Rs
                   </a>
                 </ul>
               </div>
