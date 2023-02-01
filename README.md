@@ -1,6 +1,8 @@
 # Food Subscription System
 A solution to the common problem faced by working professionals and students who travel and do not have access to healthy and good quality food. Our proposed solution connects homemakers and home kitchens with those in need through a subscription-based system.
 
+![chrome-capture-2023-1-1](https://user-images.githubusercontent.com/81856196/215974167-21d05a9c-b002-42d3-a61e-6cd60d852c5a.gif)
+
 ## Problem Statement
 Poor diet on the job is costing countries around the world up to 20% in lost productivity, either due to malnutrition or obesity. Many students also avoid eating in hostel messes due to the lack of quality and taste. This leads to unhealthy eating habits and skipping meals. Our solution aims to address this problem and provide a healthy and cost-effective alternative.
 
