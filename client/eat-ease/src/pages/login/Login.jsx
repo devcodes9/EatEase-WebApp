@@ -1,5 +1,7 @@
 import axios from 'axios';
 import React, { useContext, useState } from 'react'
+import { useNavigate } from 'react-router-dom';
+import { Navbar } from '../../components/navbar/Navbar';
 import { AuthContext } from '../../context/AuthContext';
 import './login.css'
 
@@ -10,26 +12,33 @@ const Login = () => {
     });
 
     const { user, loading, error, dispatch } = useContext(AuthContext);
+
+    const navigate = useNavigate()
+
     const handleChange = (e) => {
         setCredentials(prev => ({ ...prev, [e.target.id]: e.target.value }))
     }
+
     const handleClick = async (e) => {
         e.preventDefault()
         dispatch({ type: "LOGIN_START" })
         try {
             const res = await axios.post("/auth/login", credentials)
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
+            navigate("/")
         } catch (err) {
             dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
+            console.log(err.response.data)
         }
     }
 
-    console.log(user);
 
     return (
+        <>
+        <Navbar type = "login" />
         <div className='container login login-ctn' >
             <div className="text-center ">
-                <main className="form-signin w-100 m-auto">
+                <div className="form-signin w-100 m-auto">
                     <form>
                         <h1
                             className="mb-4"
@@ -41,10 +50,10 @@ const Login = () => {
 
                         <div className="form-floating">
                             <input
-                                type="email"
+                                type="text"
                                 className="form-control"
                                 id="username"
-                                placeholder="name@example.com"
+                                placeholder="Username"
                                 onChange={handleChange}
                             />
                             <label htmlFor="floatingInput">Username</label>
@@ -65,15 +74,19 @@ const Login = () => {
                                 <input type="checkbox" value="remember-me" /> Remember me
                             </label>
                         </div>
-                        <button onClick={handleClick} className="w-100 btn btn-lg btn-primary" type="submit">
+                        <button disabled={loading} onClick={handleClick} className="w-100 btn btn-lg btn-primary mb-5" type="submit" style={{ backgroundColor: "#DD5642" }}>
                             Sign in
                         </button>
-                        {error && <span>{error.message}</span>}
-                        <p className="mt-5 mb-3 text-muted">&copy; 2017–2022</p>
+                <div>
+                {error && <span>{error.match(/Error: (.+)</)[1].split("<br>")[0]}</span>}
+                </div>
+                        <p className="mt-5 mb-3 text-muted">&copy; 2022–2023</p>
                     </form>
-                </main>
+                </div>
+                
             </div>
         </div>
+        </>
     )
 }
 

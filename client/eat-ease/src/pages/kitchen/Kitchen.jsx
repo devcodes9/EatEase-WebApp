@@ -81,6 +81,9 @@ export const Kitchen = () => {
               <span className="kitchenDesc">{data.desc}</span>
             </div>
           </div>
+          <div className="days">
+            <p className="lead">You have chosen <b>{days} days</b> for Subscription. </p>
+          </div>
           <h1 className="planTitle">Plans</h1>
           <div className="planWrapper">
             <div className="planItem">
