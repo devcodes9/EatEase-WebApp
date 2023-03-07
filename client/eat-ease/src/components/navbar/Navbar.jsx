@@ -15,11 +15,10 @@ export const Navbar = ({ type }) => {
         <div className="navItems">
           {type !== 'login' && type !== 'register' ?
             <>
-            {user ? <><span>{user.username}</span><button className="navButton">Logout</button></> : <><button className="navButton">Register</button>
-              <button className="navButton">Login</button></>}
-              
+              {user ? <><span>{user.username}</span><button className="navButton">Logout</button></> : <><button className="navButton">Register</button>
+                <Link to={'/login'} className="navButton" style={{ textDecoration: 'none', textEmphasis: 'none' }}>Login</Link></>}
             </> :
-            type == 'login' ? <><span>Not registered yet?</span> <button className="navButton">Register</button></> : <><span>Already registered?</span> <button className="navButton">Login</button></>
+            type === 'login' ? <><span>Not registered yet?</span><button className="navButton">Register</button></> : <><span>Already registered?</span> <button className="navButton">Login</button></>
           }
         </div>
       </div>

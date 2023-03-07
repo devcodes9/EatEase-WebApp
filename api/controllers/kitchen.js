@@ -1,4 +1,5 @@
 const Kitchen = require("../models/Kitchen");
+const Plan = require("../models/Plan");
 const createKitchen = async (req,res,next) => {
     const newKitchen = new Kitchen(req.body);
     try {
@@ -78,5 +79,17 @@ const countByType = async (req,res,next) => {
     }
 }
 
+const getKitchenPlans = async (req, res, next) => {
+    try{
+        const kitchen = await Kitchen.findById(req.params.id);
+        const list = await Promise.all(kitchen.plans.map(plan => {
+            return Plan.findById(plan);
+        }))
+        res.status(200).json(list);
+    }
+    catch (err) {
+        next(err);
+    }
+}
 
-module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen, countByKitchen, countByType};
+module.exports = {createKitchen, deleteKitchen, getKitchen, getAllKitchen, updateKitchen, countByKitchen, countByType, getKitchenPlans};

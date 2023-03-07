@@ -31,3 +31,9 @@
     color: #03989E;
     background-color:#E9EAED;
 }
+
+.navButton:hover{
+    text-emphasis: none;
+    text-decoration: none;
+    color: #03989E;
+}

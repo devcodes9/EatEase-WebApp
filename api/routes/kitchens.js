@@ -1,5 +1,5 @@
 const express = require("express");
-const { createKitchen, updateKitchen, deleteKitchen, getKitchen, getAllKitchen, countByKitchen, countByType } = require("../controllers/kitchen.js");
+const { createKitchen, updateKitchen, deleteKitchen, getKitchen, getAllKitchen, countByKitchen, countByType, getKitchenPlans } = require("../controllers/kitchen.js");
 const router = express.Router();
 const Kitchen = require('../models/Kitchen.js');
 const createError = require('../utils/error.js');
@@ -21,5 +21,6 @@ router.get("/find/:id", getKitchen)
 router.get("/", getAllKitchen)
 router.get("/countByKitchen", countByKitchen)
 router.get("/countByType", countByType)
+router.get("/plan/:id", getKitchenPlans)
 
 module.exports = router

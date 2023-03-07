@@ -1,0 +1,23 @@
+.planWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.planTitle{
+    text-align: center;
+}
+
+.callWrapper{
+    position: absolute;
+    top: 10px;
+    right: 0;
+}
+
+.callBtn{
+    margin-left: 5px;
+    padding: 5px;
+    color: white;
+}
