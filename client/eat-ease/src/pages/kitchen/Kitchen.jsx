@@ -35,7 +35,7 @@ export const Kitchen = () => {
       setPlanModal(true);
     }
     else {
-      navigate("login");
+      navigate("/login");
     }
   }
   const images = [

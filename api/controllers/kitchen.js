@@ -51,7 +51,7 @@ const getAllKitchen = async (req,res,next) => {
 
 const countByKitchen = async (req,res,next) => {
     const kitchens = req.query.kitchens.split(",");
-    console.log(kitchens);
+    // console.log(kitchens);
     try {
         const list = [];
         for (let index = 0; index < kitchens.length; index++) {

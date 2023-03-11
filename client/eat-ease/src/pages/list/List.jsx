@@ -16,7 +16,10 @@ export const List = () => {
   const [dates, setDates] = useState(location.state.dates)
   const [openDate, setOpenDate] = useState(false)
 
-  const {data, loading, error, reFetch} = useFetch(`/kitchens?city=${destination}&type=${food}`);
+  const url = destination
+    ? `/kitchens?city=${destination}&type=${food}`
+    : `/kitchens?type=${food}`;
+  const {data, loading, error, reFetch} = useFetch(url);
 
   const handleClick = () => {
     reFetch();

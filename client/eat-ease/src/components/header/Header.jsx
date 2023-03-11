@@ -24,8 +24,6 @@ export const Header = ({ type }) => {
         }
     ]);
 
-    // const [loading, setLoading] = useState(true);
-    // console.log("I m out", {food, destination, dates})
     const {dispatch} = useContext(SearchContext);
 
     const navigate = useNavigate()
@@ -33,22 +31,8 @@ export const Header = ({ type }) => {
 
     const handleSearch = async (e) => {
         e.preventDefault();
-        // console.log("I m out", {food, destination, dates});
-        // if(!food || !destination ||  !dates){
-        //     console.log("Esme meri expertise nahi hai");
-        // }
-  
         await dispatch({type: "NEW_SEARCH", payload: { food, destination, dates }});
-        // setLoading(false);
-
-        // const data = {food: food, destination: destination, dates: dates};
-        // console.log("Data" , data);
-
-        // if(loading === false){
-        // }
-        const data = {food: food, destination: destination, dates: dates};
-        // console.log("Data" , data);
-        
+        const data = {food: food, destination: destination, dates: dates};     
         navigate("/kitchens", { state: data })
     }
     return (
