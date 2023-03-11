@@ -3,11 +3,12 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import { Navbar } from '../../components/navbar/Navbar';
 import { AuthContext } from '../../context/AuthContext';
-import './login.css'
+import './register.css'
 
-const Login = () => {
+const Register = () => {
     const [credentials, setCredentials] = useState({
         username: undefined,
+        email: "",
         password: undefined,
     });
 
@@ -23,7 +24,9 @@ const Login = () => {
         e.preventDefault()
         dispatch({ type: "LOGIN_START" })
         try {
-            const res = await axios.post("/auth/login", credentials)
+            console.log(credentials);
+            await axios.post("/auth/register", credentials)
+            const res = await axios.post("/auth/login", {username: credentials.username, password: credentials.password});
             dispatch({ type: "LOGIN_SUCCESS", payload: res.data })
             navigate(-1)
         } catch (err) {
@@ -35,8 +38,8 @@ const Login = () => {
 
     return (
         <>
-        <Navbar type = "login" />
-        <div className='container login login-ctn' >
+        <Navbar type = "register" />
+        <div className='container register register-ctn' >
             <div className="text-center ">
                 <div className="form-signin w-100 m-auto">
                     <form>
@@ -46,7 +49,7 @@ const Login = () => {
                             width="72"
                             height="57"
                         >EatEase</h1>
-                        <h1 className="h3 mb-3 fw-normal">Please sign in</h1>
+                        <h1 className="h3 mb-3 fw-normal">Register Here</h1>
 
                         <div className="form-floating">
                             <input
@@ -57,6 +60,16 @@ const Login = () => {
                                 onChange={handleChange}
                             />
                             <label htmlFor="floatingInput">Username</label>
+                        </div>
+                        <div className="form-floating">
+                            <input
+                                type="email"
+                                className="form-control"
+                                id="email"
+                                placeholder="Email"
+                                onChange={handleChange}
+                            />
+                            <label htmlFor="floatingInput">Email</label>
                         </div>
                         <div className="form-floating">
                             <input
@@ -75,7 +88,7 @@ const Login = () => {
                             </label>
                         </div>
                         <button disabled={loading} onClick={handleClick} className="w-100 btn btn-lg btn-primary mb-5" type="submit" style={{ backgroundColor: "#DD5642" }}>
-                            Sign in
+                            Register
                         </button>
                 <div>
                 {error && <span>{error.match(/Error: (.+)</)[1].split("<br>")[0]}</span>}
@@ -90,4 +103,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Register
