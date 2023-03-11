@@ -1,6 +1,7 @@
 import React from 'react'
 import './featured.css';
 import { useFetch } from '../../hooks/useFetch';
+import { Link } from 'react-router-dom';
 
 const Featured = () => {
     const { data, loading, error } = useFetch("/kitchens?featured=true")
@@ -19,7 +20,7 @@ const Featured = () => {
                                         <div className="card-img-overlay">
                                             <h5 className="card-title">{item.name}</h5>
                                             <p className="card-text">{item.desc}</p>
-                                            <a href="#" className="btn" style={{ backgroundColor: "#DD5642" }}>Subscribe</a>
+                                            <Link to={`/kitchens/${item._id}`} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>Subscribe</Link>
                                             <p className="card-text"><small>{item.totalSubCnt} Subscribed</small></p>
                                         </div>
                                     </div>

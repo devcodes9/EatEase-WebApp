@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import { useLocation, useNavigate } from 'react-router-dom'
 import { Header } from '../../components/header/Header'
 import { Navbar } from '../../components/navbar/Navbar'
 import { format } from 'date-fns';
@@ -8,6 +8,7 @@ import './list.css'
 import { DateRange } from 'react-date-range'
 import SearchItem from '../../components/searchItem/SearchItem'
 import { useFetch } from '../../hooks/useFetch'
+import { SearchContext } from '../../context/SearchContext'
 
 export const List = () => {
   const location = useLocation()
@@ -21,8 +22,15 @@ export const List = () => {
     : `/kitchens?type=${food}`;
   const {data, loading, error, reFetch} = useFetch(url);
 
-  const handleClick = () => {
-    reFetch();
+  const { dispatch } = useContext(SearchContext);
+  const navigate = useNavigate();
+
+  const handleClick = async (e) => {
+      e.preventDefault();
+      await dispatch({type: "NEW_SEARCH", payload: { food, destination, dates }});
+      const data = {food: food, destination: destination, dates: dates};     
+      navigate("/kitchens", { state: data })
+      reFetch();
   }
   return (
     <div>
