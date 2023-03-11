@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom'
 import { AuthContext } from '../../context/AuthContext';
 
 export const Navbar = ({ type }) => {
-  const { user } = useContext(AuthContext);
+  const { user, dispatch } = useContext(AuthContext);
+  
+  const handleClick = (e) => {
+    e.preventDefault();
+    dispatch({type: "LOGOUT"});
+  }
 
   return (
     <div className="navbar">
@@ -15,7 +20,7 @@ export const Navbar = ({ type }) => {
         <div className="navItems">
           {type !== 'login' && type !== 'register' ?
             <>
-              {user ? <><span>{user.username}</span><button className="navButton">Logout</button></> : <><button className="navButton">Register</button>
+              {user ? <><span>{user.username}</span><button onClick={handleClick} className="navButton">Logout</button></> : <><button className="navButton">Register</button>
                 <Link to={'/login'} className="navButton" style={{ textDecoration: 'none', textEmphasis: 'none' }}>Login</Link></>}
             </> :
             type === 'login' ? <><span>Not registered yet?</span><button className="navButton">Register</button></> : <><span>Already registered?</span> <button className="navButton">Login</button></>

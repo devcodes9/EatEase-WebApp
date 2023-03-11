@@ -7,7 +7,7 @@ import 'react-date-range/dist/styles.css'; // main css file
 import 'react-date-range/dist/theme/default.css'; // theme css file
 import { useState, useContext } from 'react'
 import { format } from 'date-fns';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SearchContext } from '../../context/SearchContext';
 import { AuthContext } from '../../context/AuthContext';
 
@@ -53,7 +53,7 @@ export const Header = ({ type }) => {
                     <>
                         <h1 className="headerTitle">Crave for "Ghar ka khana"? Well,Welcome😉</h1>
                         <p className="headerDesc">Food just like your Mom makes(even tastier) on Subscription basis!</p>
-                        {!user && <button className="headerBtn">Sign In/Register</button>}
+                        {!user && <Link to="/login" className="headerBtn" style={{ textDecoration: 'none', textEmphasis: 'none', color: "#E9EAED" }}>Sign In/Register</Link>}
                         <form onSubmit={handleSearch}>
                         <div className="headerSearch">
                             <div className="headerSearchItem">
