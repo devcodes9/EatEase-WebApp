@@ -6,7 +6,7 @@ import { useFetch } from '../../hooks/useFetch';
 import './subscribe.css'
 
 const Subscribe = ({ setOpen, kitchenId }) => {
-    const { data, loading, error } = useFetch(`kitchens/plan/${kitchenId}`)
+    const { data, loading, error } = useFetch(`http://localhost:8080/api/kitchens/plan/${kitchenId}`)
     const { dates } = useContext(SearchContext);
     const dayDiff = (date1, date2) => {
         const timeDiff = Math.abs(date1.getTime() - date2.getTime());
@@ -25,25 +25,26 @@ const Subscribe = ({ setOpen, kitchenId }) => {
             <FontAwesomeIcon icon={faCircleXmark} className="rClose"
                 onClick={handleClick} />
             <div className="planWrapper">
-                {data.map(item => {
-                    <div className="planItem">
-                        <div className="card mb-5" style={{ width: "18rem" }}>
-                            <div className="card-header">{item?.title}</div>
-                            <ul className="list-group list-group-flush">
-                                <li className="list-group-item">{item?.desc}</li>
-                                <li className="list-group-item">{item?.menu}</li>
-                                <li className="list-group-item">{item?.price} Rs / day</li>
-                                <a
-                                    href="#"
-                                    className="btn"
-                                    style={{ backgroundColor: "#DD5642", color: "white" }}
-                                >
-                                    Pay {item?.price * days} Rs
-                                </a>
-                            </ul>
-                        </div>
-                    </div>
-                })}
+                {
+                    data.map(item => {
+                        return (<><div className="planItem">
+                            <div className="card mb-5" style={{ width: "18rem" }}>
+                                <div className="card-header">{item.title}</div>
+                                <ul className="list-group list-group-flush">
+                                    <li className="list-group-item">{item.desc}</li>
+                                    <li className="list-group-item">{item.menu}</li>
+                                    <li className="list-group-item">{item.price} Rs / day</li>
+                                    <a
+                                        href="#"
+                                        className="btn"
+                                        style={{ backgroundColor: "#DD5642", color: "white" }}
+                                    >
+                                        Pay {item.price * days} Rs
+                                    </a>
+                                </ul>
+                            </div>
+                        </div></>);
+                    })}
             </div>
         </div>
     )

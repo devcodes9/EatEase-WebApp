@@ -6,8 +6,23 @@ const usersRoute = require("./routes/users.js")
 const kitchensRoute = require("./routes/kitchens.js")
 const plansRoute = require("./routes/plans.js")
 const cookieParser = require("cookie-parser");
+var cors = require('cors')
+
 const app = express();
 dotenv.config();
+
+app.use(
+    express.urlencoded({
+        extended: true,
+    })
+);
+app.use(
+    cors({
+        origin: "http://localhost:3000",
+        credentials: true,
+        methods: ["GET", "POST", "PUT", "DELETE"],
+    })
+);
 
 const connect = async () => {
     try {
@@ -18,11 +33,11 @@ const connect = async () => {
     }
 }
 
-mongoose.connection.on("disconnected", ()=>{
+mongoose.connection.on("disconnected", () => {
     console.log("MongoDB disconnected");
 });
 
-mongoose.connection.on("connected", ()=>{
+mongoose.connection.on("connected", () => {
     console.log("MongoDB connected");
 });
 
@@ -36,5 +51,5 @@ app.use("/api/plans", plansRoute);
 
 app.listen(8080, () => {
     connect();
-    console.log("Listening on port 8000!");
+    console.log("Listening on port 8080!");
 })
