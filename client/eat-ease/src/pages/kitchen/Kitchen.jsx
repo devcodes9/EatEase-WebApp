@@ -99,7 +99,6 @@ export const Kitchen = () => {
               </div>
             </div>
             <div className="days">
-              <p className="lead">You have chosen <b>{days} days</b> for Subscription. </p>
               <button onClick={handleClick} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>Subscribe Now</button>
             </div>
             {openPlanModal && <Subscribe setOpen = {setPlanModal} kitchenId = {id} />}

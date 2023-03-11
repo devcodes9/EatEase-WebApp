@@ -22,6 +22,9 @@ const SearchItem = ({ item }) => {
             {item.rating &&
               <button className="rating">{item.rating}</button>}
           </div>
+          <p className="card-text" style={{color: "grey"}}>
+            {item.totalSubCnt} Subscribed
+          </p>
           <span>{item.distance} from center</span>
           <p className="card-text">
             {item.desc}

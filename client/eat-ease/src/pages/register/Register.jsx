@@ -79,7 +79,7 @@ const Register = () => {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
-                            <label for="floatingPassword">Password</label>
+                            <label htmlFor="floatingPassword">Password</label>
                         </div>
 
                         <div className="checkbox mb-3">
