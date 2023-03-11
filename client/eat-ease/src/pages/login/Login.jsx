@@ -28,7 +28,7 @@ const Login = () => {
             navigate(-1)
         } catch (err) {
             dispatch({ type: "LOGIN_FAILURE", payload: err.response.data })
-            console.log(err.response.data)
+            // console.log(err.response.data)
         }
     }
 
@@ -66,7 +66,7 @@ const Login = () => {
                                 placeholder="Password"
                                 onChange={handleChange}
                             />
-                            <label for="floatingPassword">Password</label>
+                            <label htmlFor="floatingPassword">Password</label>
                         </div>
 
                         <div className="checkbox mb-3">

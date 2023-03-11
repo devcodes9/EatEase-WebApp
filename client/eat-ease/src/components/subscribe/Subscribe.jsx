@@ -18,7 +18,11 @@ const Subscribe = ({ setOpen, kitchenId }) => {
     const handleClick = () => {
         setOpen(false);
     }
-    const days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
+    let days = 1;
+
+    if (dates.length != 0) {
+        days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
+    }
     return (
         <div>
             <h1 className="planTitle">Plans</h1>

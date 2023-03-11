@@ -25,8 +25,13 @@ export const Kitchen = () => {
 
     return diffDays;
   }
+  
+  let days = 1;
 
-  const days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
+  if(dates.length != 0){
+    days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
+  }
+
   const navigate = useNavigate()
   const { user } = useContext(AuthContext);
 
