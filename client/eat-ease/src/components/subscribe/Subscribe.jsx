@@ -13,6 +13,7 @@ const Subscribe = ({ setOpen, kitchenId }) => {
     const [food, setFood] = useState("");
     const [openDate, setOpenDate] = useState(false);
     const { dates } = useContext(SearchContext);
+    
     const [localDates, setDates] = useState([
         {
             startDate: dates[0].startDate,
@@ -20,7 +21,6 @@ const Subscribe = ({ setOpen, kitchenId }) => {
             key: 'selection'
         }
     ]);
-
     const dayDiff = (date1, date2) => {
         const timeDiff = Math.abs(date1.getTime() - date2.getTime());
         const diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
@@ -33,7 +33,7 @@ const Subscribe = ({ setOpen, kitchenId }) => {
     }
     let days = 1;
 
-    if (dates.length != 0) {
+    if (dates.length != 0 && localDates.length !== 0) {
         days = dayDiff(localDates[0].startDate, localDates[0].endDate) + 1;
     }
     return (

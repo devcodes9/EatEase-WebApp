@@ -1,11 +1,30 @@
-import React from 'react'
+import React, { useContext, useState } from 'react'
 import './featured.css';
 import { useFetch } from '../../hooks/useFetch';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { SearchContext } from '../../context/SearchContext';
 
 const Featured = () => {
     const { data, loading, error } = useFetch("/kitchens?featured=true")
     // console.log(data);
+    const [dates, setDates] = useState([
+        {
+            startDate: new Date(),
+            endDate: new Date(),
+            key: 'selection'
+        }
+    ]);
+
+    const { dispatch } = useContext(SearchContext);
+
+    const navigate = useNavigate()
+
+    const handleSearch = async (e, id) => {
+        e.preventDefault();
+        await dispatch({ type: "NEW_SEARCH", payload: { dates } });
+        navigate(`/kitchens/${id}`, {state: dates})
+    };
+
     return (
         <div className='featured'>
             {
@@ -20,7 +39,7 @@ const Featured = () => {
                                         <div className="card-img-overlay">
                                             <h5 className="card-title">{item.name}</h5>
                                             <p className="card-text">{item.desc}</p>
-                                            <Link to={`/kitchens/${item._id}`} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>Subscribe</Link>
+                                            <Link to={`/kitchens/${item._id}`} onClick={(e) => handleSearch(e, item._id)} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>Subscribe</Link>
                                             <p className="card-text"><small>{item.totalSubCnt} Subscribed</small></p>
                                         </div>
                                     </div>
