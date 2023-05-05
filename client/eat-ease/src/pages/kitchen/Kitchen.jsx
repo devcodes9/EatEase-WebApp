@@ -15,7 +15,7 @@ import Subscribe from "../../components/subscribe/Subscribe";
 export const Kitchen = () => {
   const location = useLocation()
   const id = location.pathname.split("/")[2]
-  const { data, loading, error } = useFetch(`/kitchens/find/${id}`)
+  const { data, loading, error } = useFetch(`https://eat-ease-backend.onrender.com/api/kitchens/find/${id}`)
   const { dates } = useContext(SearchContext);
   const [openPlanModal, setPlanModal] = useState(false);
 
