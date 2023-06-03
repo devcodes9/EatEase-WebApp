@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { createPlan, updatePlan, deletePlan, getPlan, getAllPlan } = require("../controllers/Plan.js");
+const { createPlan, updatePlan, deletePlan, getPlan, getAllPlan } = require("../controllers/plan.js");
 const { verifyAdmin } = require("../utils/verifyToken.js");
 
 //Create
