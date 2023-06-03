@@ -8,7 +8,7 @@ import { format } from 'date-fns';
 import './subscribe.css'
 
 const Subscribe = ({ setOpen, kitchenId }) => {
-    const { data, loading, error } = useFetch(`https://eat-ease-backend.onrender.com/kitchens/plan/${kitchenId}`)
+    const { data, loading, error } = useFetch(`/kitchens/plan/${kitchenId}`)
     const [destination, setDestination] = useState("");
     const [food, setFood] = useState("");
     const [openDate, setOpenDate] = useState(false);
