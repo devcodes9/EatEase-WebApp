@@ -1,13 +1,49 @@
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+
+// export const useFetch = (url) => {
+//     const [data, setData] = useState([]);
+//     const [loading, setLoading] = useState(false);
+//     const [error, setError] = useState([false]);
+
+//     useEffect(() => {
+//         const fetchData = async () => {
+//             setLoading(true);
+//             try {
+//                 const res = await axios.get(url);
+//                 setData(res.data);
+//             } catch (err) {
+//                 setError(err);
+//             }
+//             setLoading(false);
+//         };
+//         fetchData();
+//     }, [url]);
+
+//     const reFetch = async () => {
+//         setLoading(true);
+//         try {
+//             const res = await axios.get(url);
+//             setData(res.data);
+//         } catch (err) {
+//             setError(err);
+//         }
+//         setLoading(false);
+//     };
+
+//     return {data, loading, error, reFetch};
+// };
+
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 
 export const useFetch = (url) => {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [error, setError] = useState([false]);
+    const [error, setError] = useState(false);
 
-    useEffect(() => {
-        const fetchData = async () => {
+    const fetchData = useMemo(
+        () => async () => {
             setLoading(true);
             try {
                 const res = await axios.get(url);
@@ -16,9 +52,13 @@ export const useFetch = (url) => {
                 setError(err);
             }
             setLoading(false);
-        };
+        },
+        [url]
+    );
+
+    useEffect(() => {
         fetchData();
-    }, [url]);
+    }, [fetchData, url]);
 
     const reFetch = async () => {
         setLoading(true);
@@ -31,6 +71,6 @@ export const useFetch = (url) => {
         setLoading(false);
     };
 
-    return {data, loading, error, reFetch};
+    return { data, loading, error, reFetch };
 };
 
