@@ -87,11 +87,15 @@ export const Kitchen = () => {
             </div>
             <span className="kitchenDistance">{data.distance} from center</span>
             <div className="kitchenImages">
-              {data.photos?.map((image) => (
+              {/* {data.photos?.map((image) => (
                 <div className="kitchenImgWrapper">
                   <img src={image.src} alt="..." className="kitchenImg" />
                 </div>
-              ))}
+              ))} */}
+              {data.photos && Object.entries(data.photos).map(([key, image]) => (
+              <div className="kitchenImgWrapper" key={key}>
+                <img src={image.src} alt="..." className="kitchenImg" />
+              </div>))}
             </div>
             <div className="kitchenDetails">
               <div className="kitchenDetailsTexts">

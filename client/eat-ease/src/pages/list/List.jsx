@@ -64,9 +64,12 @@ export const List = () => {
           <div className="listResult">
             {loading ? "Loading" : 
             <>
-            {data.map(item => (
+            {/* {data.map(item => (
               <SearchItem item = {item} key = {item._id} />
-            ))}
+            ))} */}
+            {Object.entries(data).map(([key, item]) => (
+    <SearchItem item={item} key={key} />
+  ))}
             </>}
           </div>
         </div>
