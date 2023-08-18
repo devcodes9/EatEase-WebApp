@@ -1,6 +1,8 @@
 # Food Subscription System
 A solution to the common problem faced by working professionals and students who travel and do not have access to healthy and good quality food. Our proposed solution connects homemakers and home kitchens with those in need through a subscription-based system.
-Watch the demo:
+
+**Watch the demo:**
+
 [![Watch the video](https://img.youtube.com/vi/_cZuZkACK9o/hqdefault.jpg)](https://www.youtube.com/embed/_cZuZkACK9o)
 
 
