@@ -6,11 +6,9 @@ import { SearchContextProvider } from "./context/SearchContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-
-    <AuthContextProvider>
-      <SearchContextProvider>
-        <App />
-      </SearchContextProvider>
-    </AuthContextProvider>
-
+  <AuthContextProvider>
+    <SearchContextProvider>
+      <App />
+    </SearchContextProvider>
+  </AuthContextProvider>
 );
