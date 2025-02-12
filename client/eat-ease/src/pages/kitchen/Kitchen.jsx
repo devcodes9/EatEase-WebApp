@@ -13,9 +13,9 @@ import { AuthContext } from "../../context/AuthContext";
 import Subscribe from "../../components/subscribe/Subscribe";
 
 export const Kitchen = () => {
-  const location = useLocation()
-  const id = location.pathname.split("/")[2]
-  const { data, loading, error } = useFetch(`https://eat-ease-backend.onrender.com/api/kitchens/find/${id}`)
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const { data, loading, error } = useFetch(`/api/kitchens/find/${id}`);
   const { dates } = useContext(SearchContext);
   const [openPlanModal, setPlanModal] = useState(false);
 
@@ -24,25 +24,24 @@ export const Kitchen = () => {
     const diffDays = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
 
     return diffDays;
-  }
-  
+  };
+
   let days = 1;
 
-  if(dates.length != 0){
+  if (dates.length != 0) {
     days = dayDiff(dates[0].startDate, dates[0].endDate) + 1;
   }
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { user } = useContext(AuthContext);
 
   const handleClick = () => {
     if (user) {
       setPlanModal(true);
-    }
-    else {
+    } else {
       navigate("/login");
     }
-  }
+  };
   const images = [
     {
       src: "https://img.freepik.com/free-photo/indian-delicious-roti-assortment_23-2149073331.jpg?w=900&t=st=1672825926~exp=1672826526~hmac=2127faf18c21ca0f66b0290f07408cd9714635f3122ca2639c14f255efb9763a",
@@ -67,8 +66,10 @@ export const Kitchen = () => {
     <div>
       <Navbar />
       <Header type="list" />
-      {loading ? ("Loading") :
-        (<div className="kitchenCtn">
+      {loading ? (
+        "Loading"
+      ) : (
+        <div className="kitchenCtn">
           <div className="kitchenWrapper">
             <div className="callWrapper">
               For further information:
@@ -99,11 +100,20 @@ export const Kitchen = () => {
               </div>
             </div>
             <div className="days">
-              <button onClick={handleClick} className="btn" style={{ backgroundColor: "#DD5642", color: "white" }}>Subscribe Now</button>
+              <button
+                onClick={handleClick}
+                className="btn"
+                style={{ backgroundColor: "#DD5642", color: "white" }}
+              >
+                Subscribe Now
+              </button>
             </div>
-            {openPlanModal && <Subscribe setOpen = {setPlanModal} kitchenId = {id} />}
+            {openPlanModal && (
+              <Subscribe setOpen={setPlanModal} kitchenId={id} />
+            )}
           </div>
-        </div>)}
+        </div>
+      )}
       <Footer />
     </div>
   );
