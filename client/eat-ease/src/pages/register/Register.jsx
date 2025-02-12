@@ -26,13 +26,16 @@ const Register = () => {
     try {
       console.log(credentials);
       await axios.post(
-        `${process.env.REACT_APP_URL}/auth/register`,
+        `${process.env.REACT_APP_API_URL}/auth/register`,
         credentials
       );
-      const res = await axios.post(`${process.env.REACT_APP_URL}/auth/login`, {
-        username: credentials.username,
-        password: credentials.password,
-      });
+      const res = await axios.post(
+        `${process.env.REACT_APP_API_URL}/auth/login`,
+        {
+          username: credentials.username,
+          password: credentials.password,
+        }
+      );
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
       navigate(-1);
     } catch (err) {
